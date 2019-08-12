@@ -18,43 +18,41 @@
   </el-form>
 </template>
 <script>
-export default{
-  data () {
-    return {
-      ruls: {
-        account: [{required: true, message: '请输入用户名', trigger: 'blur'}],
-        checkPass: [{required: true, message: '请输入密码', trigger: 'blur'}]
-      },
-      checked: true,
-      loginForm: {
-        username: 'admin',
-        password: '123'
-      },
-      loading: false
-    }
-  },
-  methods: {
-    submitClick: function () {
-      var _this = this
-      this.loading = true
-      this.postRequest('/login', {
-        username: this.loginForm.username,
-        password: this.loginForm.password
-      }).then(resp => {
-        _this.loading = false
-        if (resp && resp.status === 200) {
-          var data = resp.data
-          _this.$store.commit('login', data.obj)
-          var path = _this.$route.query.redirect
-          _this.$router
-            .replace({
-              path: path === '/' || path === undefined ? '/home' : path
-            })
-        }
-      })
+  export default{
+    data(){
+      return {
+        rules: {
+          account: [{required: true, message: '请输入用户名', trigger: 'blur'}],
+          checkPass: [{required: true, message: '请输入密码', trigger: 'blur'}]
+        },
+        checked: true,
+        loginForm: {
+          username: 'admin',
+          password: '123'
+        },
+        loading: false
+      }
+    },
+    methods: {
+      submitClick: function () {
+        var _this = this;
+        this.loading = true;
+        this.postRequest('/login', {
+          username: this.loginForm.username,
+          password: this.loginForm.password
+        }).then(resp=> {
+          _this.loading = false;
+          if (resp && resp.status == 200) {
+            var data = resp.data;
+            _this.$store.commit('login', data.obj);
+            var path = _this.$route.query.redirect;
+            _this.$router
+              .replace({path: path == '/' || path == undefined ? '/home' : path});
+          }
+        });
+      }
     }
   }
-}
 </script>
 <style>
   .login-container {
