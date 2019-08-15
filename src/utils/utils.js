@@ -11,6 +11,7 @@ export const isNotNullORBlank = (...args)=> {
   }
   return true;
 }
+// 初始化菜单
 export const initMenu = (router, store)=> {
   if (store.state.routes.length > 0) {
     return;

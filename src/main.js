@@ -24,6 +24,7 @@ Vue.prototype.deleteRequest = deleteRequest;
 Vue.prototype.putRequest = putRequest;
 Vue.prototype.isNotNullORBlank = isNotNullORBlank;
 
+// 路由全局守卫 是login页面进行登录，不是不进行登录
 router.beforeEach((to, from, next)=> {
     if (to.name == 'Login') {
       next();

@@ -5,6 +5,7 @@ import '../lib/stomp'
 
 Vue.use(Vuex)
 
+// store 数组
 export default new Vuex.Store({
   state: {
     user: {
